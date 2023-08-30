@@ -9,11 +9,11 @@
   <div class="search-form d-flex justify-content-between align-items-center">
     <input
       type="text"
-      class="form-control mr-3"
+      class="form-control mr-3 mb-2"
       placeholder="Digite o título da sua busca"
       [(ngModel)]="searchQuery"
     >
-    <button class="btn btn-primary" (click)="searchMovies()">Pesquisar</button>
+    <button class="btn btn-primary mb-2" (click)="searchMovies()">Pesquisar</button>
   </div>
   <button class="btn btn-secondary mt-3" (click)="clearResults()">Limpar</button>
   <div class="search-results mt-4">

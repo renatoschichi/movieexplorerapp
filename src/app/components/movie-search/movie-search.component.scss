@@ -3,6 +3,10 @@
   margin-top: 50px;
   margin-bottom: 120px;
 
+  @media (max-width: 860px) {
+    width: 90%;
+  }
+
   > .search-header {
     margin-bottom: 20px;
 
@@ -34,11 +38,19 @@
       position: relative;
       margin-bottom: 30px;
 
+      @media (max-width: 860px) {
+        display: block;
+      }
+
       > .movie-poster {
         width: 300px;
-        object-fit: cover;
-        flex: none;
         margin-right: 30px;
+
+        @media (max-width: 860px) {
+          display: flex;
+          margin: auto;
+          width: 180px;
+        }
       }
 
       > .movie-details {
@@ -62,6 +74,11 @@
 }
 
 @media (max-width: 768px) {
+  .search-form {
+    display: block !important;
+    text-align: center;
+  }
+
   .search-results {
 
     > .row {

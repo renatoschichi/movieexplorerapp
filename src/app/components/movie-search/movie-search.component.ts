@@ -11,7 +11,11 @@ export class MovieSearchComponent implements OnInit {
   searchQuery: string = '';
   searchResults: Movie[] = [];
 
-  constructor(private movieService: MovieService) { }
+  constructor(
+    private movieService: MovieService
+  ) {
+    this.searchResults = this.movieService.getSavedSearchResults();
+  }
 
   ngOnInit(): void {
   }
@@ -26,6 +30,8 @@ export class MovieSearchComponent implements OnInit {
       (data: any) => {
         if (data.Response === 'True') {
           this.searchResults.push(data as Movie);
+          this.searchQuery = '';
+          this.movieService.saveSearchResults(this.searchResults);
         } else {
           this.searchResults = [];
         }
@@ -41,11 +47,13 @@ export class MovieSearchComponent implements OnInit {
     const index = this.searchResults.indexOf(movie);
     if (index !== -1) {
       this.searchResults.splice(index, 1);
+      this.movieService.saveSearchResults(this.searchResults);
     }
   }
 
   clearResults() {
     this.searchResults = [];
+    this.movieService.saveSearchResults(this.searchResults);
   }
   
 }

@@ -18,6 +18,8 @@
   }
 
   .navbar-nav {
+    white-space: nowrap;
+    
     @media (max-width: 768px) {
       text-align: center;
     }

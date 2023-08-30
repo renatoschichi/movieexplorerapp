@@ -1,0 +1,32 @@
+@import '../../../styles.scss';
+
+.footer {
+  background-color: var(--background-color);
+  padding: 10px 0;
+  height: 40px;
+
+  .container > div {
+    @media (max-width: 768px) {
+      display: grid !important;
+      justify-content: center !important;
+    }
+
+    > div {
+      justify-content: center;
+    }
+  }
+
+  .footer-text {
+    margin-top: 10px;
+
+    @media (min-width: 768px) {
+      text-align: left;
+    }
+  }
+
+  .social-icon {
+    font-size: 26px;
+    margin-left: 10px;
+    cursor: pointer;
+  }
+}

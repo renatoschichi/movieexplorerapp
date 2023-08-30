@@ -1,0 +1,49 @@
+@import '../../../styles.scss';
+
+.navbar {
+  background-color: var(--background-color);
+
+  .navbar-brand {
+    margin-right: 20px;
+    cursor: pointer;
+  }
+
+  .navbar-toggler {
+    border: none;
+    background-color: var(--white-color);
+
+    .navbar-toggler-icon {
+      color: #f00;
+    }
+  }
+
+  .navbar-nav {
+    @media (max-width: 768px) {
+      text-align: center;
+    }
+    
+    .nav-item {
+      @media (max-width: 768px) {
+        margin-bottom: 10px;
+      }
+      
+      .nav-link {
+        color: var(--black-color);
+        transition: color 0.3s ease;
+
+        &:hover {
+          color: #f00;
+        }
+      }
+    }
+  }
+  
+  @media (min-width: 768px) {
+    .navbar-nav {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 20px;
+    }
+  }
+}

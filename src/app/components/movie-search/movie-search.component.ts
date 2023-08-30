@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Movie } from 'src/app/models/movie.model';
+import { MovieService } from 'src/app/services/movie-service/movie-service.service';
 
 @Component({
   selector: 'app-movie-search',
@@ -6,10 +8,44 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./movie-search.component.scss']
 })
 export class MovieSearchComponent implements OnInit {
+  searchQuery: string = '';
+  searchResults: Movie[] = [];
 
-  constructor() { }
+  constructor(private movieService: MovieService) { }
 
   ngOnInit(): void {
   }
 
+  searchMovies() {
+    if (this.searchQuery.trim() === '') {
+      this.searchResults = [];
+      return;
+    }
+
+    this.movieService.searchMovie(this.searchQuery).subscribe(
+      (data: any) => {
+        if (data.Response === 'True') {
+          this.searchResults.push(data as Movie);
+        } else {
+          this.searchResults = [];
+        }
+      },
+      (error) => {
+        console.log(error);
+        this.searchResults = [];
+      }
+    );
+  }
+
+  removeMovie(movie: Movie) {
+    const index = this.searchResults.indexOf(movie);
+    if (index !== -1) {
+      this.searchResults.splice(index, 1);
+    }
+  }
+
+  clearResults() {
+    this.searchResults = [];
+  }
+  
 }

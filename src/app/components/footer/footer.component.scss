@@ -1,9 +1,11 @@
 @import '../../../styles.scss';
 
 .footer {
-  background-color: var(--background-color);
+  background-color: var(--secondary-color);
   padding: 10px 0;
-  height: 40px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
 
   .container > div {
     @media (max-width: 768px) {

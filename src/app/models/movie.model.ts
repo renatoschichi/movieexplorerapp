@@ -11,6 +11,7 @@ export interface Movie {
   Country: string;
   Ratings: Rating[];
   Type: string;
+  Poster: string;
 }
 
 export interface Rating {

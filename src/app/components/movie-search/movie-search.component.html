@@ -15,6 +15,7 @@
     >
     <button class="btn btn-primary mb-2" (click)="searchMovies()">Pesquisar</button>
   </div>
+  <div *ngIf="error" class="error-message">{{ error }}</div>
   <button class="btn btn-secondary mt-3" (click)="clearResults()">Limpar</button>
   <div class="search-results mt-4">
     <div class="row">
@@ -30,6 +31,9 @@
           <p><strong>País:</strong> {{ movie.Country }}</p> 
           <p><strong>Tipo:</strong> {{ movie.Type }}</p>
           <p><strong>Tempo de duração:</strong> {{ movie.Runtime }}</p>
+          <button type="button" class="btn btn-warning" (click)="toggleFavorite(movie)">
+            {{ isFavorite(movie) ? 'Remover favorito' : 'Favoritar' }}
+          </button>
         </div>
       </div>
     </div>

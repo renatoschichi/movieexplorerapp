@@ -1,0 +1,17 @@
+<div class="container">
+  <h2>Meus Títulos Favoritos</h2>
+  <div *ngFor="let movie of favoriteMovies" class="movie-card">
+    <img src="{{ movie.Poster }}" class="movie-poster">
+      <div class="movie-details">
+        <h3>{{ movie.Title }}</h3>
+        <p><strong>Ano:</strong> {{ movie.Year }}</p>
+        <p><strong>Diretor:</strong> {{ movie.Director }}</p>
+        <p><strong>Elenco:</strong> {{ movie.Actors }}</p>
+        <p><strong>Gênero:</strong> {{ movie.Genre }}</p> 
+        <p><strong>Sinopse:</strong> {{ movie.Plot }}</p>
+        <p><strong>País:</strong> {{ movie.Country }}</p> 
+        <p><strong>Tipo:</strong> {{ movie.Type }}</p>
+        <p><strong>Tempo de duração:</strong> {{ movie.Runtime }}</p>
+      </div>
+  </div>
+</div>

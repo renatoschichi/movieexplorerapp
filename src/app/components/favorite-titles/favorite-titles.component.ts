@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { MovieState } from 'src/app/store/movie/movie.reducer';
 import { Movie } from 'src/app/models/movie.model';
-import { selectSearchResults } from 'src/app/store/movie/movie.selector';
+import { selectFavorites } from 'src/app/store/movie/movie.selector';
+import * as MovieActions from 'src/app/store/movie/movie.actions';
 
 @Component({
   selector: 'app-favorite-titles',
@@ -15,8 +16,12 @@ export class FavoriteTitlesComponent implements OnInit {
   constructor(private store: Store<{ movies: MovieState }>) {}
 
   ngOnInit(): void {
-    this.store.select(selectSearchResults).subscribe((favorites) => {
+    this.store.select(selectFavorites).subscribe((favorites) => {
       this.favoriteMovies = favorites;
     });
   }
+
+  removeFromFavorites(movie: Movie) {
+    this.store.dispatch(MovieActions.removeFromFavorites({ movie }));
+  }  
 }

@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+
 import { Movie } from 'src/app/models/movie.model';
-import { Store } from '@ngrx/store';
-import { MovieState } from 'src/app/store/movie/movie.reducer';
-import * as MovieActions from 'src/app/store/movie/movie.actions';
-import { selectSearchResults } from 'src/app/store/movie/movie.selector';
 import { MovieService } from 'src/app/services/movie-service/movie-service.service';
+
+import { Store } from '@ngrx/store';
+
+import * as MovieActions from 'src/app/store/movie/movie.actions';
+import { MovieState } from 'src/app/store/movie/movie.reducer';
+import { selectSearchResults, selectFavorites } from 'src/app/store/movie/movie.selector';
 
 @Component({
   selector: 'app-movie-search',
@@ -15,6 +18,7 @@ export class MovieSearchComponent implements OnInit {
   searchQuery: string = '';
   searchResults: Movie[] = [];
   error: string = '';
+  favoriteMovies: Movie[] = [];
 
   constructor(
     private movieService: MovieService,
@@ -23,11 +27,17 @@ export class MovieSearchComponent implements OnInit {
     this.store.select('movies').subscribe((state) => {
       this.searchResults = state.searchResults;
     });
+    this.store.select(selectSearchResults).subscribe((searchResults) => {
+      this.searchResults = searchResults;
+    });
   }
 
   ngOnInit(): void {
     this.store.select(selectSearchResults).subscribe((searchResults) => {
       this.searchResults = searchResults;
+    });
+    this.store.select(selectFavorites).subscribe((favorites) => {
+      this.favoriteMovies = favorites;
     });
   }
 
@@ -56,7 +66,6 @@ export class MovieSearchComponent implements OnInit {
             Poster: data.Poster
           };
           this.store.dispatch(MovieActions.addMovie({ movie: movieToAdd }));
-          this.addToFavorites(movieToAdd);
           this.searchQuery = '';
         } else {
           this.error = 'Título não encontrado';
@@ -72,24 +81,18 @@ export class MovieSearchComponent implements OnInit {
   }
 
   toggleFavorite(movie: Movie) {
-    if (this.isFavorite(movie)) {
-      this.removeFromFavorites(movie);
+    const isFavorite = this.isFavorite(movie);
+
+    if (isFavorite) {
+      this.store.dispatch(MovieActions.removeFromFavorites({ movie }));
     } else {
-      this.addToFavorites(movie);
+      this.store.dispatch(MovieActions.addToFavorites({ movie }));
     }
   }
 
-  addToFavorites(movie: Movie) {
-    this.store.dispatch(MovieActions.addToFavorites({ movie }));
-  }
-
-  removeFromFavorites(movie: Movie) {
-    this.store.dispatch(MovieActions.removeFromFavorites({ movie }));
-  }
-
   isFavorite(movie: Movie): boolean {
-    return this.searchResults.some(m => m === movie);
-  }
+    return this.favoriteMovies.some((m) => m.Title === movie.Title);
+  }  
 
   removeMovie(movie: Movie) {
     this.store.dispatch(MovieActions.removeMovie({ movie }));

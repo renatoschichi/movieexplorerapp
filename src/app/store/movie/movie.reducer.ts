@@ -1,5 +1,11 @@
 import { createReducer, on } from '@ngrx/store';
-import { addMovieSuccess, removeMovie, clearResults, addToFavorites, removeFromFavorites } from './movie.actions';
+import {
+  addMovieSuccess,
+  removeMovie,
+  clearResults,
+  addToFavorites,
+  removeFromFavorites
+} from './movie.actions';
 import { Movie } from 'src/app/models/movie.model';
 
 export interface MovieState {
@@ -27,6 +33,6 @@ export const movieReducer = createReducer(
     return { ...state, favorites: [...state.favorites, movie] };
   }),
   on(removeFromFavorites, (state, { movie }) => {
-    return { ...state, favorites: state.favorites.filter(m => m !== movie) };
+    return { ...state, favorites: state.favorites.filter((m) => m !== movie) };
   })
 );

@@ -1,9 +1,14 @@
-import { createFeatureSelector, createSelector } from '@ngrx/store';
+import { createSelector } from '@ngrx/store';
 import { MovieState } from './movie.reducer';
 
-export const selectMovieState = createFeatureSelector<MovieState>('movie');
+const selectMovieState = (state: { movies: MovieState }) => state.movies;
 
 export const selectSearchResults = createSelector(
   selectMovieState,
-  (state) => state.searchResults
+  (state: MovieState) => state.searchResults
+);
+
+export const selectFavorites = createSelector(
+  selectMovieState,
+  (state: MovieState) => state.favorites
 );

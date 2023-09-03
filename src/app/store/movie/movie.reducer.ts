@@ -8,6 +8,8 @@ import {
 } from './movie.actions';
 import { Movie } from 'src/app/models/movie.model';
 
+export const movieFeatureKey = 'movies';
+
 export interface MovieState {
   searchResults: Movie[];
   favorites: Movie[];
@@ -18,21 +20,49 @@ const initialState: MovieState = {
   favorites: []
 };
 
+const savedState = localStorage.getItem(movieFeatureKey);
+const initialAppState: MovieState = savedState ? JSON.parse(savedState) : initialState;
+
 export const movieReducer = createReducer(
-  initialState,
+  initialAppState,
   on(addMovieSuccess, (state, { movie }) => {
-    return { ...state, searchResults: [...state.searchResults, movie] };
+    const searchResults = [...state.searchResults, movie];
+    const newState: MovieState = { ...state, searchResults };
+
+    localStorage.setItem(movieFeatureKey, JSON.stringify(newState));
+
+    return newState;
   }),
   on(removeMovie, (state, { movie }) => {
-    return { ...state, searchResults: state.searchResults.filter(m => m !== movie) };
+    const searchResults = state.searchResults.filter(m => m !== movie);
+    const newState: MovieState = { ...state, searchResults };
+
+    localStorage.setItem(movieFeatureKey, JSON.stringify(newState));
+
+    return newState;
   }),
   on(clearResults, (state) => {
-    return { ...state, searchResults: [] };
+    const searchResults: Movie[] = [];
+    const newState: MovieState = { ...state, searchResults };
+
+    localStorage.setItem(movieFeatureKey, JSON.stringify(newState));
+
+    return newState;
   }),
   on(addToFavorites, (state, { movie }) => {
-    return { ...state, favorites: [...state.favorites, movie] };
+    const favorites = [...state.favorites, movie];
+    const newState: MovieState = { ...state, favorites };
+
+    localStorage.setItem(movieFeatureKey, JSON.stringify(newState));
+
+    return newState;
   }),
   on(removeFromFavorites, (state, { movie }) => {
-    return { ...state, favorites: state.favorites.filter((m) => m !== movie) };
+    const favorites = state.favorites.filter((m) => m !== movie);
+    const newState: MovieState = { ...state, favorites };
+
+    localStorage.setItem(movieFeatureKey, JSON.stringify(newState));
+
+    return newState;
   })
 );

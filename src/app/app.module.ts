@@ -12,7 +12,7 @@ import { MovieSearchComponent } from './components/movie-search/movie-search.com
 import { FooterComponent } from './components/footer/footer.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { AboutusComponent } from './components/aboutus/aboutus.component';
-import { movieReducer } from './store/movie/movie.reducer';
+import { movieReducer, movieFeatureKey } from './store/movie/movie.reducer';
 import { MovieEffects } from './store/movie/movie.effects';
 import { FavoriteTitlesComponent } from './components/favorite-titles/favorite-titles.component';
 
@@ -31,7 +31,7 @@ import { FavoriteTitlesComponent } from './components/favorite-titles/favorite-t
     FormsModule,
     HttpClientModule,
     RouterModule.forRoot([]),
-    StoreModule.forRoot({ movies: movieReducer }),
+    StoreModule.forRoot({ [movieFeatureKey]: movieReducer }),
     EffectsModule.forRoot([MovieEffects])
   ],
   providers: [],

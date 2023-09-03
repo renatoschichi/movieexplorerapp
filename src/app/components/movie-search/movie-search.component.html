@@ -32,7 +32,7 @@
           <p><strong>Tipo:</strong> {{ movie.Type }}</p>
           <p><strong>Tempo de duração:</strong> {{ movie.Runtime }}</p>
           <button type="button" class="btn btn-warning" (click)="toggleFavorite(movie)">
-            <ng-container *ngIf="isFavorite(movie); else favorite">
+            <ng-container *ngIf="!isFavorite(movie); else favorite">
               <i class="bi bi-heart"></i> Adicionar aos favoritos
             </ng-container>
             <ng-template #favorite>

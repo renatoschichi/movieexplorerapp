@@ -21,7 +21,7 @@ export class FavoriteTitlesComponent implements OnInit {
     });
   }
 
-  removeFromFavorites(movie: Movie) {
-    this.store.dispatch(MovieActions.removeFromFavorites({ movie }));
-  }  
+  clearFavorites() {
+    this.store.dispatch(MovieActions.clearFavorites());
+  }
 }

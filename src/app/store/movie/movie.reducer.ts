@@ -4,7 +4,8 @@ import {
   removeMovie,
   clearResults,
   addToFavorites,
-  removeFromFavorites
+  removeFromFavorites,
+  clearFavorites
 } from './movie.actions';
 import { Movie } from 'src/app/models/movie.model';
 
@@ -64,5 +65,8 @@ export const movieReducer = createReducer(
     localStorage.setItem(movieFeatureKey, JSON.stringify(newState));
 
     return newState;
+  }),
+  on(clearFavorites, (state) => {
+    return { ...state, favorites: [] };
   })
 );

@@ -1,5 +1,6 @@
 <div class="container">
   <h2>Meus Títulos Favoritos</h2>
+  <button class="btn btn-danger mb-3" (click)="clearFavorites()">Limpar Favoritos</button>
   <div *ngFor="let movie of favoriteMovies" class="movie-card">
     <img src="{{ movie.Poster }}" class="movie-poster">
       <div class="movie-details">

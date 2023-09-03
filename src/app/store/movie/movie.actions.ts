@@ -32,3 +32,5 @@ export const removeFromFavorites = createAction(
   '[Movie] Remove From Favorites',
   props<{ movie: Movie }>()
 );
+
+export const clearFavorites = createAction('[Movie] Clear Favorites');

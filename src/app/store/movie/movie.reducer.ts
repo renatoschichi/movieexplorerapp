@@ -67,6 +67,9 @@ export const movieReducer = createReducer(
     return newState;
   }),
   on(clearFavorites, (state) => {
-    return { ...state, favorites: [] };
+    const removeFavorites: MovieState = { ...state, favorites: [] };
+
+    localStorage.setItem(movieFeatureKey, JSON.stringify(removeFavorites));
+    return removeFavorites;
   })
 );

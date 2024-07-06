@@ -1,27 +1,40 @@
-# MovieExplorerApp
+🎬 Movie Explorer
+Movie Explorer is an application where you can search for movies or series using the public IMDB API, check your previous searches, and favorite the ones you desire. 📽️🌟
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.1.2.
+📖 About
+Movie Explorer is a responsive application developed as a portfolio project. It allows users to search for movies and series using the public IMDB API, view their previous searches, and mark their favorite ones.
 
-## Development server
+🛠 Technologies
+Angular: Main framework for building the application version 14.1.2.
+TypeScript: Language used for development.
+Bootstrap: CSS framework used for styling and responsiveness.
+NGRX: Reactive state management.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+✨ Features
+🔍 Search Movies and Series: Search using the public IMDB API.
+🕒 Search History: View your previous searches.
+⭐ Favorite Searches: Mark movies and series as favorites.
+📱 Responsiveness: The application is fully responsive and adapts to different screen sizes.
 
-## Code scaffolding
+🚀 Installation
+To run this project locally, follow the instructions below:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+1 - Clone the repository
+git clone https://github.com/renatoschichi/movieexplorerapp.git
 
-## Build
+2 - Navigate to the project directory:
+cd movieexplorerapp
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+3 - Install the dependencies:
+npm install
 
-## Running unit tests
+4 - Start the application:
+ng serve
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+5 - Access the application in your browser:
+Open your browser and go to http://localhost:4200
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+📚 Usage
+Search: Type the name of a movie or series in the search bar.
+History: Access the history in the main screen to view your previous searches.
+Favorite: Click the favorite button to the search results to mark them as favorites and go to favorite tabs in the navbar.

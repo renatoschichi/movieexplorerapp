@@ -3,9 +3,11 @@
 Movie Explorer is an application where you can search for movies or series using the public IMDB API, check your previous searches, and favorite the ones you desire. 📽️🌟
 
 
+
 📖 About
 
 Movie Explorer is a responsive application developed as a portfolio project. It allows users to search for movies and series using the public IMDB API, view their previous searches, and mark their favorite ones.
+
 
 
 🛠 Technologies
@@ -19,6 +21,7 @@ Bootstrap: CSS framework used for styling and responsiveness.
 NGRX: Reactive state management.
 
 
+
 ✨ Features
 
 🔍 Search Movies and Series: Search using the public IMDB API.
@@ -28,6 +31,7 @@ NGRX: Reactive state management.
 ⭐ Favorite Searches: Mark movies and series as favorites.
 
 📱 Responsiveness: The application is fully responsive and adapts to different screen sizes.
+
 
 
 🚀 Installation
@@ -53,6 +57,7 @@ ng serve
 5 - Access the application in your browser:
 
 Open your browser and go to http://localhost:4200
+
 
 
 📚 Usage

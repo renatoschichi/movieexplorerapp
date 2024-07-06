@@ -11,8 +11,11 @@ Movie Explorer is a responsive application developed as a portfolio project. It 
 🛠 Technologies
 
 Angular: Main framework for building the application version 14.1.2.
+
 TypeScript: Language used for development.
+
 Bootstrap: CSS framework used for styling and responsiveness.
+
 NGRX: Reactive state management.
 
 
@@ -53,6 +56,9 @@ Open your browser and go to http://localhost:4200
 
 
 📚 Usage
+
 Search: Type the name of a movie or series in the search bar.
+
 History: Access the history in the main screen to view your previous searches.
+
 Favorite: Click the favorite button to the search results to mark them as favorites and go to favorite tabs in the navbar.
